@@ -1,0 +1,7 @@
+/__pycache__
+/*.json
+/*.psd
+/*.csv
+/*.cfg
+/*.xlsx
+/*.yaml
