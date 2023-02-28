@@ -34,8 +34,19 @@ def post():
     #             n = input("Wrong input, try again: ")
     for img in progress.track(os.listdir(upload_folder)):
         n = int(n) + 1
-        timestamp = (os.path.splitext(os.path.basename(upload_folder + img))[0]).replace(' ', ', ', 1)
-        caption = f"Confession Submitted:\n{timestamp}"
+        suffix = "a.m."
+        timestamp = (os.path.splitext(os.path.basename(upload_folder + img))[0])
+        date = timestamp[:10]
+        hr = int(timestamp[11:13])
+        min = timestamp[14:]
+        if hr > 12:
+            hr = hr - 12
+            suffix = "p.m."
+        elif hr == 0:
+            hr = 12
+        if hr < 10:
+            hr = "0"+ str(hr)
+        caption = f"Confession Submitted on {date}, {hr}:{min} {suffix}\n.\n.\n.\nWanna Confess something? Visit the link in Bio."
         print(colored(f"Posting Confession Number {n}.", "cyan"))
         cl.photo_upload(upload_folder + img, caption)
         print(colored(f"Confession Posted.\n", "green"))
@@ -45,8 +56,9 @@ def post():
         with open(configfile, 'w') as f:
             config.write(f)
     os.rmdir(upload_folder)
-    print(colored(f"Done!!\n\n", "green"))
-    # input(f"Press Enter to Quit.")
+    print(colored(f"Done!!\n", "green"))
+    input(colored(f"Press ENTER to Exit.", "yellow"))
+        
 
 if __name__ == "__main__":
     asciiart()

@@ -27,7 +27,7 @@ def main():
         file_obj.GetContentFile('Confessions.csv',mimetype='text/csv')
         print(colored(f"Done!!\n", "green"))
     else:
-        print(colored(f"Confessions weren't updated, using the old ones...\n\nYou can chnage this behaviour in the config.cfg file.\n", "cyan"))
+        print(colored(f"Confessions weren't updated, using the old ones...\n\nYou can change this behaviour in the config.cfg file.\n", "cyan"))
     if config["settings"]["auto"] == "True":
         print(colored(f"Auto index is enabled, retreiving last posted confession.\n", "cyan"))
         n = int(config["index"]["form"]) + 1
@@ -88,7 +88,7 @@ def main():
         date = timestamp[0].replace('/', '-')
         time = timestamp[1]
         time = time[:-3]
-        time = time.replace(':', 'h ') + 'm.'
+        time = time.replace(':', '$')
         filename = date + ' ' + time
         header_text = gender + proff + " confesses to " + victim
         body_text = confession
@@ -149,7 +149,7 @@ if __name__ == "__main__":
         main()
         if len(os.listdir(postfolder)) == 0:
             os.rmdir(postfolder)
-            print(colored("No new Confessions, Exitting...", "red"))
+            input(colored(f"No new confessions found, press ENTER to Exit.", "red"))
             sys.exit(0)
         check = input(colored(f"Waiting till moderation is complete, When done press ENTER to advance to posting.\nPressing anything else will not lead to posting :", "yellow"))
         if config["settings"]["instantpost"] == "True" and config["settings"]["instantmod"] == "True" and check == "":
