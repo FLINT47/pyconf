@@ -11,7 +11,8 @@ config.read(configfile)
 api_dev_key = config["account"]["api_dev_key"]
 api_user_key = config["account"]["api_user_key"]
 if not(os.path.exists(os.path.abspath(os.path.dirname(sys.argv[0])) + "\pastebin.xml")):
-    os.mkdir(os.path.abspath(os.path.dirname(sys.argv[0])) + "\pastebin.xml")
+    with open(os.path.abspath(os.path.dirname(sys.argv[0])) + "\pastebin.xml", "x") as fp:
+        pass
 def saveidx(index):
     paste_data = {
         'api_option' : 'paste',
