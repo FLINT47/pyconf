@@ -13,6 +13,7 @@ from ascii import asciiart
 from post import post
 from audit import audit
 import regex
+from pastebin import loadidx, saveidx, deleteidx
 
 def main():
     asciiart()
@@ -30,7 +31,7 @@ def main():
         print(colored(f"Confessions weren't updated, using the old ones...\n\nYou can change this behaviour in the config.cfg file.\n", "cyan"))
     if config["settings"]["auto"] == "True":
         print(colored(f"Auto index is enabled, retreiving last posted confession.\n", "cyan"))
-        n = int(config["index"]["form"]) + 1
+        n = int(loadidx()) + 1
     else:
         while True:
             conf_num = input(colored("Auto loading of index is disabled in config file, please enter the confession number :", "cyan"))
@@ -132,11 +133,10 @@ def main():
             file.saveAs(jpg_file, options, asCopy=True)
             if config["settings"]["instantmod"] == "True":
                 os.startfile(jpg_file)
-        if config["settings"]["load"] == "True":
-            re_index = int(config["index"]["form"]) + 1
-            config.set("index", "form", str(re_index))
-            with open(configfile, 'w') as f:
-                config.write(f)
+    if config["settings"]["load"] == "True":
+        re_index = int(loadidx()) + length
+        deleteidx()
+        saveidx(re_index)
     print (colored(f"Done!!\n", "green"))
     # input(f"Press Enter to Quit.")
 
@@ -158,5 +158,3 @@ if __name__ == "__main__":
 
     else:
         audit()
-
-# main ends here
