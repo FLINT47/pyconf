@@ -6,11 +6,6 @@ This repo allows you to centrally manage all the aspects of the confession page,
 
 
 
-## Prerequisite
-
-Needs additional files for authentication which is provided by the admin and are listed below as follows : 
-
-
 
 ## Prerequisite
 
