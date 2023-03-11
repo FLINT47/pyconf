@@ -23,16 +23,16 @@ settings.yaml
 ## Usage
 
 Clone the Repo/ Download the Code.\
-Install the requirements using :
+Install the requirements using:
 
 
 ```bash
-  pip install -r requirements.txt
+pip install -r requirements.txt
 ```
-Run main.py either directly or from the terminal by :
+Run main.py either directly or from the terminal by:
 
 ```bash
-  python main.py
+python main.py
 ```
 
 
