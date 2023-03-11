@@ -38,7 +38,7 @@ def post():
         timestamp = (os.path.splitext(os.path.basename(upload_folder + img))[0])
         date = timestamp[:10]
         hr = int(timestamp[11:13])
-        min = timestamp[14:]
+        min = timestamp[14:16]
         if hr > 12:
             hr = hr - 12
             suffix = "p.m."
