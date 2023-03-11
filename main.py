@@ -58,6 +58,7 @@ def main():
         for i in banned_user:
             if fuzz.ratio(user, i) > 60:
                 return True
+    seperator = 0
     for i in progress.track(range(0,length), description="Generating Images"):
         gender = str(con_list[i][0])
         gender = gender.replace("\n"," ")
@@ -129,8 +130,9 @@ def main():
             head_layer.textItem.contents = header_text
             body_layer.textItem.contents = body_text
             options = ps.JPEGSaveOptions(quality=12)
-            jpg_file = os.path.join(postfolder, f"{filename}.jpg")
+            jpg_file = os.path.join(postfolder, f"{filename}{seperator}.jpg")
             file.saveAs(jpg_file, options, asCopy=True)
+            seperator += 1
             if config["settings"]["instantmod"] == "True":
                 os.startfile(jpg_file)
     if config["settings"]["load"] == "True":
