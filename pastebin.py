@@ -56,3 +56,18 @@ def deleteidx():
         }
     requests.post("https://pastebin.com/api/api_post.php", data=delete_data)
 
+if __name__ == "__main__":
+    n = input("1. Retreive Current Index\n2. Update Index\nEnter your Choice: ")
+    if n == "1":
+        print(loadidx())
+    elif n == "2":
+        oldidx = int(loadidx())
+        n = int(input("Enter the New Index: "))
+        if n >= oldidx:
+            print("New Index can't be greater than Old Index. Try again!!")
+        else:
+            deleteidx()
+            saveidx(n)
+            print("Done")
+    else:
+        print("Wrong Input try again.")
