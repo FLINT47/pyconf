@@ -5,7 +5,7 @@ from ascii import asciiart
 from termcolor import colored
 from configparser import ConfigParser
 
-version = 1.06
+version = 1.07
 branch = "experimental"
 files = {
     "main.py" : f"https://raw.githubusercontent.com/FLINT47/pyconf/{branch}/main.py",
@@ -30,9 +30,9 @@ if versioncheck > version:
         r = requests.get(url)
         with open (fname, "w") as f:
             f.writelines(r.text)
-    print(colored("Done\n", "green"))
+    print(colored("Done.\n", "green"))
 else:
-    print(colored("Already running the latest version\n", "green"))
+    print(colored("Already running the latest version.\n", "green"))
 os.remove("check.txt")
 
 from makeimg import makeimg
