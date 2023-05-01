@@ -73,6 +73,7 @@ def makeimg():
             elif gender == "Rather Not Say":
                 gender = "Someone from "
             else:
+                gender = clean(gender, no_emoji=True, fix_unicode=False, to_ascii=False, lower=False)
                 gender = gender + " from "
             proff = con_list[i][1]
             proff = proff.replace("\n"," ")
@@ -84,6 +85,7 @@ def makeimg():
                 proff = ""
             victim = con_list[i][2]
             victim = victim.replace("\n"," ")
+            victim = clean(victim, no_emoji=True, fix_unicode=False, to_ascii=False, lower=False)
             confession = con_list[i][3].strip()
             confession = confession.replace("\n"," ")
             confession = clean(confession, no_emoji=True, fix_unicode=False, to_ascii=False, lower=False)

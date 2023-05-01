@@ -5,7 +5,7 @@ from ascii import asciiart
 from termcolor import colored
 from configparser import ConfigParser
 
-version = 1.08
+version = 1.10
 branch = "main"
 files = {
     "main.py" : f"https://raw.githubusercontent.com/FLINT47/pyconf/{branch}/main.py",
