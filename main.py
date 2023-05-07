@@ -5,7 +5,7 @@ from ascii import asciiart
 from termcolor import colored
 from configparser import ConfigParser
 
-version = 1.10
+version = 1.11
 branch = "main"
 files = {
     "main.py" : f"https://raw.githubusercontent.com/FLINT47/pyconf/{branch}/main.py",
@@ -47,7 +47,7 @@ if not config["settings"]["audit"] == "True":
     makeimg()
     if len(os.listdir(postfolder)) == 0:
         os.rmdir(postfolder)
-        input(colored(f"No new confessions found, press ENTER to Exit.", "red"))
+        input(colored(f"Confession folder was found empty, press ENTER to Exit.", "red"))
         sys.exit(0)
     check = input(colored(f"Waiting till moderation is complete, When done press ENTER to advance to posting.\nPressing anything else will not lead to posting :", "yellow"))
     if config["settings"]["instantpost"] == "True" and config["settings"]["instantmod"] == "True" and check == "":

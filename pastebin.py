@@ -3,6 +3,7 @@ from xml.etree import ElementTree as ET
 from configparser import ConfigParser
 import os
 import sys
+from termcolor import colored
 
 
 configfile = os.path.abspath(os.path.dirname(sys.argv[0])) + "\config.cfg"
@@ -57,17 +58,19 @@ def deleteidx():
     requests.post("https://pastebin.com/api/api_post.php", data=delete_data)
 
 if __name__ == "__main__":
-    n = input("1. Retreive Current Index\n2. Update Index\nEnter your Choice: ")
-    if n == "1":
-        print(loadidx())
-    elif n == "2":
+    print("Current Index is: " + loadidx() + "\n")
+    n = input("Do you want to update the index? [y/N]")
+    if n == "y" or n == "Y":
         oldidx = int(loadidx())
-        n = int(input("Enter the New Index: "))
-        if n >= oldidx:
-            print("New Index can't be greater than Old Index. Try again!!")
-        else:
-            deleteidx()
-            saveidx(n)
-            print("Done")
-    else:
-        print("Wrong Input try again.")
+        try:
+            n = int(input("Enter the New Index: "))
+            if n >= oldidx:
+                print("New Index can't be greater than Old Index. Try again!!")
+            else:
+                deleteidx()
+                saveidx(n)
+                print("Done")
+        except Exception as e:
+            print(colored("Wrong Input try again", "red"))
+            print(colored(str(e), "red"))
+    input(colored("Press Enter to Exit.", "yellow"))

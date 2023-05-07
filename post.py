@@ -55,8 +55,8 @@ def post():
         os.rmdir(upload_folder)
         print(colored(f"Done!!\n", "green"))
     except Exception as e:
-        print("An error occurred")
-        print(str(e))
+        print(colored("An error occurred.", "red"))
+        print(colored((str(e)), "red"))
     input(colored(f"Press ENTER to Exit.", "yellow"))
         
 
