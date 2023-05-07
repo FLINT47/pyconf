@@ -145,6 +145,6 @@ def makeimg():
             saveidx(re_index)
         print (colored(f"Done!!\n", "green"))
     except Exception as e:
-        print("An error occurred")
-        print(str(e))
+        print(colored("An error occurred", "red"))
+        print(colored((str(e)), "red"))
     subprocess.call(["taskkill","/F","/IM","Photoshop.exe"], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
