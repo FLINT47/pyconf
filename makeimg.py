@@ -19,6 +19,7 @@ config.read(configfile)
 postfolder = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop\Postings')
 def makeimg():
     try:
+        kill = True
         banned_user = (config["settings"]["bannedUser"]).split(", ")
         id = config["account"]["id"]
         if config["settings"]["load"] == "True":
@@ -147,4 +148,8 @@ def makeimg():
     except Exception as e:
         print(colored("An error occurred", "red"))
         print(colored((str(e)), "red"))
-    subprocess.call(["taskkill","/F","/IM","Photoshop.exe"], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+        subprocess.call(["taskkill","/F","/IM","Photoshop.exe"], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+        kill = False
+        return
+    if kill:
+        subprocess.call(["taskkill","/F","/IM","Photoshop.exe"], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
